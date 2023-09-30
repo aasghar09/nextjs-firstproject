@@ -10,7 +10,11 @@ export async function GET(request)
     const userToken = request.cookies.get("authtoken")?.value;
     console.log("/api/current route "+userToken);
 
-     if(userToken != undefined)
+     if(!userToken){
+      return NextResponse.json({message:"Error while logging out!!"});
+
+     }
+     else
      {
         const data =jwt.verify(userToken,process.env.JWT_KEY);
         console.log(data);
@@ -18,11 +22,7 @@ export async function GET(request)
         const user = await User.findById(data._id).select("-password");
         return NextResponse.json(user);
      }
-     else
-     {
-      //return NextResponse.(new URL("/login",request.nextUrl));
-      return NextResponse.json({message:"Error while logging out!!",success:false});
-     }
+     
 }
 
 
