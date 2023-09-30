@@ -6,6 +6,7 @@ import { connectDb } from "@/helper/db";
 //connectDb();
 export async function GET(request)
 {
+   await connectDb();   
     const userToken = request.cookies.get("authtoken")?.value;
     console.log("/api/current route "+userToken);
 

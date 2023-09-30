@@ -1,13 +1,13 @@
 import { NextResponse } from 'next/server'
-import { connectDb } from './helper/db';
+//import { connectDb } from './helper/db';
  
 // This function can be marked `async` if using `await` inside
-export async function middleware(request) {
+export function middleware(request) {
     const pathname = request.nextUrl.pathname;
-
-    if(pathname.startsWith("/api")){
-       await connectDb();
-    }
+    console.log("middle poking with pathname="+pathname);
+    //if(pathname.startsWith("/api")){
+       //connectDb();
+    //}
 
     let authcookie = request.cookies.get("authtoken")?.value;
     console.log("middleware authcookie is = "+authcookie);

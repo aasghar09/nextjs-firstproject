@@ -4,9 +4,10 @@ import bcrypt from "bcryptjs";
 import jwt  from "jsonwebtoken";
 import { connectDb } from "@/helper/db";
 
-//connectDb();
+
 export async function POST(request)
 {
+    await connectDb();    
      
     const{email,password}=await request.json();
     const oneHour =  60 * 60 * 1000;
