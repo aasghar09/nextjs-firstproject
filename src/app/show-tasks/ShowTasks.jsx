@@ -2,8 +2,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import UserContext from '../context/userContext';
 import { deleteTaskService, getUserTasks } from '@/services/userService';
-import Task from './task';
 import { toast } from 'react-toastify';
+import Task from './Task';
 
 
 const ShowTasks = () => {
